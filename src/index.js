@@ -11,14 +11,17 @@ const gallery = document.querySelector(".gallery");
 
 let pageNumber = 1;
 
-function fetchFind () {
+function fetchFind (event) {
+    
+event.preventDefault();
 
 pageNumber = 1;
 
-fetch(`${BASE_URL}&q=${input_text.textContent}&page=${pageNumber}&per_page=5`)
+fetch(`${BASE_URL}&q=${input_text.value}&page=${pageNumber}&per_page=5`)
 .then(response =>{return response.json()})
-.then(data => {data.hits.map(elem => createGallery(elem));})
+.then(data => {data.hits.map(elem => createGallery(elem));console.log(data);})
 .catch(error => console.log(error));
+
 }
 
 

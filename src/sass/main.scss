@@ -40,6 +40,13 @@
   }
 
   .photo-card{
-      display: block;
+      display: inline-block;
       justify-content: center;
+      
+
+      margin-right: 10px;
+
+      &:nth-child(3n){
+          margin-right: 0;
+      }
   }
