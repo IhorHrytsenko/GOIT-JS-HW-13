@@ -5,24 +5,24 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /GOIT-JS-HW-12/",
+    "build": "parcel build src/*.html --public-url /GOIT-JS-HW-13/",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IhorHrytsenko/GOIT-JS-HW-12.git"
+    "url": "git+https://github.com/IhorHrytsenko/GOIT-JS-HW-13.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/IhorHrytsenko/GOIT-JS-HW-12/issues"
+    "url": "https://github.com/IhorHrytsenko/GOIT-JS-HW-13/issues"
   },
-  "homepage": "https://github.com/IhorHrytsenko/GOIT-JS-HW-12",
+  "homepage": "https://github.com/IhorHrytsenko/GOIT-JS-HW-13",
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
-    "parcel-plugiтn-nuke-dist": "^1.0.1",
+    "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
   },
@@ -30,6 +30,7 @@
     "gh-pages": "^3.2.3",
     "handlebars": "^4.7.7",
     "lodash.debounce": "^4.0.8",
+    "material-design-icons": "^3.0.1",
     "pnotify": "^5.2.0"
   }
 }
