@@ -20,4 +20,21 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+.gallery {
+  list-style: none;
+}
+
+.stats {
+  display: flex;
+}
+
+.stats-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.photo-card {
+  display: block;
+  justify-content: center;
+}
 /*# sourceMappingURL=main.css.map */
