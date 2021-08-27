@@ -1,5 +1,5 @@
 import cards from "./templates/card.hbs";
-import * as basicLightbox from './node_modules/basiclightbox';
+import * as basicLightbox from 'basiclightbox';
 
 
 const API_KEY = '23099415-b292849e49f5632c41c65f5ef';
@@ -8,8 +8,6 @@ const input_text = document.querySelector("#search-form");
 const gallery = document.querySelector(".gallery");
 const loadMore = document.querySelector("#load-more");
 let pageNumber = 1;
-const bigImage = basicLightbox.create();
-
 
 const createGallery = (elem) => {
     gallery.insertAdjacentHTML("beforeend", cards(elem));
@@ -20,6 +18,17 @@ const createGallery = (elem) => {
 const clearGallery = () => {
     gallery.innerHTML = "";
     loadMore.classList.replace("load-more-visible", "load-more-hide");
+}
+
+const bigImg = (event) => {
+
+    if (event.target.nodeName === "IMG"){
+        const bigImage = basicLightbox.create(`<img src="${event.target.alt}">`);
+        bigImage.show();
+    }
+    else {
+        return;
+    }
 }
 
 const fetchFind = (event) => {       
@@ -51,4 +60,5 @@ input_text.addEventListener("submit", fetchFind);
 
 loadMore.addEventListener("click", fetchFind);
 
+gallery.addEventListener("click", bigImg);
 
