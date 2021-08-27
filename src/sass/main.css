@@ -42,4 +42,13 @@
 .photo-card:nth-child(3n) {
   margin-right: 0;
 }
+
+.load-more-hide {
+  display: none;
+}
+
+.load-more-visible {
+  display: block;
+  justify-content: center;
+}
 /*# sourceMappingURL=main.css.map */
