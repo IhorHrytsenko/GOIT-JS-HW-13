@@ -1,5 +1,7 @@
 import cards from "./templates/card.hbs";
 import * as basicLightbox from 'basiclightbox';
+import { alert, defaultModules } from  '../node_modules/@pnotify/core/dist/PNotify.js';
+import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
 
 
 const API_KEY = '23099415-b292849e49f5632c41c65f5ef';
@@ -8,6 +10,8 @@ const input_text = document.querySelector("#search-form");
 const gallery = document.querySelector(".gallery");
 const loadMore = document.querySelector("#load-more");
 let pageNumber = 1;
+let queryText = '';
+
 
 const createGallery = (elem) => {
     gallery.insertAdjacentHTML("beforeend", cards(elem));
@@ -31,30 +35,32 @@ const bigImg = (event) => {
     }
 }
 
-const fetchFind = (event) => {       
+const fetchFind = (event) => { 
         event.preventDefault();
-        let query = ''; 
-
+         
         if (event.target.querySelector("input")){
             clearGallery();
-            query = event.target.querySelector("input").value;
+            queryText = event.target.querySelector("input").value;
         }
+
         if (event.target.id === "load-more"){
             pageNumber++;
         }
 
-        fetch(`${BASE_URL}&q=${query}&page=${pageNumber}&per_page=5`)
+        fetch(`${BASE_URL}&q=${queryText}&page=${pageNumber}&per_page=5`)
         .then(response =>{return response.json()})
-        .then(data => {data.hits.map(elem => createGallery(elem))})
+        .then(data => {
+            if (data.hits.length === 0){
+                defaultModules.set(PNotifyMobile, {});
+                alert({
+                    text: 'К сожалению, ничего не удалось найти',
+                    delay: 1500,
+                });
+            }
+            data.hits.map(elem => createGallery(elem))
+        })
         .catch(error => console.log(error));
-        
 }
-
-const imageViewer = (event) =>{
-
-    console.log(event);
-}
-
 
 input_text.addEventListener("submit", fetchFind);
 

@@ -26,6 +26,21 @@
 
   .gallery{
       list-style: none;
+
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 0;
+      margin-top: 0;
+    //   margin-right: -20px;
+  }
+
+  .gallery-item{
+    
+    flex-basis: calc((100% - 2 * 20px) / 2);
+    margin-right: 20px;
+    &:nth-child(2n + 2) {
+      margin-right: 0;
+    }
   }
 
   .stats{
@@ -42,13 +57,8 @@
   .photo-card{
       display: inline-block;
       justify-content: center;
-      
 
       margin-right: 10px;
-
-      &:nth-child(3n){
-          margin-right: 0;
-      }
   }
 
   .load-more-hide{
